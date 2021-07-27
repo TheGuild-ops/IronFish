@@ -1,3 +1,4 @@
+rm start
 dockerName=ghcr.io/iron-fish/ironfish:latest
 apt-get update && apt-get upgrade -y
 ufw allow 8889
