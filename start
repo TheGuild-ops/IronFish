@@ -1,10 +1,11 @@
 dockerName=ghcr.io/iron-fish/ironfish:latest
 apt-get update && apt-get upgrade -y
-ufw allow 9123
+ufw allow 8889
+ufw allow 8887
 docker pull $dockerName 
 
 docker stop  fish-node && docker rm  fish-node
 docker stop  fish-miner && docker rm  fish-miner
 
-docker run -d --restart always --tty --interactive --name fish-node --network host --volume $HOME/.ironfish:/root/.ironfish -p 9123:9123 $dockerName 
-docker run -d --restart always -i -t  --interactive --name fish-miner --network host --volume $HOME/.ironfish:/root/.ironfish -p 9123:9123 $dockerName miners:start
+docker run -d --restart always --tty --interactive --name fish-node --network host --volume $HOME/.ironfish:/root/.ironfish -p 8889:8889 $dockerName 
+docker run -d --restart always -i -t  --interactive --name fish-miner --network host --volume $HOME/.ironfish:/root/.ironfish -p 8887:8887 $dockerName miners:start
